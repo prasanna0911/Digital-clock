@@ -1,0 +1,68 @@
+<html>
+	<head>
+		<style>
+			body{
+				margin:0;
+				padding:0;
+				background: rgb(2,0,36);
+				background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(9,98,121,1) 35%, rgba(0,212,255,1) 100%);
+			}
+
+			.container{
+				font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+				color:white;
+				display:flex;
+				width:100vw;
+				height:100vh;
+				align-items: center;
+				justify-content: center;
+				font-size: 5rem;
+			}
+
+			#wrapper{
+				border: 3px solid white;
+				padding:1rem;
+			}
+
+			.container span{
+				margin-left:10px;
+			}
+
+			#ampm{
+				font-size:3rem;
+				align-items: end;
+			}
+		</style>
+	</head>
+<body>
+	<div class="container">
+		<div id="wrapper">
+			<span id="hours">00</span>
+			<span>:</span>
+			<span id="miniutes">00</span>
+			<span>:</span>
+			<span id="seconds">00</span>
+			<span id="ampm">AM</span>
+		</div>
+	</div>
+	<script>
+		function Time(){
+			let currentTime=new Date();
+			let hr=currentTime.getHours();
+			let min=currentTime.getMinutes();
+			let sec=currentTime.getSeconds();
+			if (hr>12){
+				hr=hr-12
+				document.getElementById("ampm").innerHTML="PM"
+			}
+			document.getElementById("hours").innerHTML=addZero(hr)
+			document.getElementById("miniutes").innerHTML=addZero(min)
+			document.getElementById("seconds").innerHTML=addZero(sec)
+		}
+		function addZero(num){
+			return (num<10)?"0"+num:num
+		}
+		setInterval(Time,500)
+	</script>
+</body>
+</html>
